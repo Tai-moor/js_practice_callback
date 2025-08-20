@@ -6,7 +6,7 @@ function log(msg) {
   output.scrollTop = output.scrollHeight;
 }
 
-//  Regex Tasks
+// Regex Tasks
 function validateEmail() {
   const emailRegex = /^[\w.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const test = "hello@gmail.com";
