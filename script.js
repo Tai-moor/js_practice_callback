@@ -1,7 +1,6 @@
 const output = document.getElementById("output");
 
 function log(msg) {
-  // Replace instead of append
   output.textContent = msg;
   output.scrollTop = output.scrollHeight;
 }
