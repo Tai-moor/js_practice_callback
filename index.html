@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        margin: 0;
+        padding: 0;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      header {
+        text-align: center;
+        padding: 30px 20px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        margin-bottom: 30px;
+        backdrop-filter: blur(10px);
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      header p {
+        margin: 10px 0 0;
+        font-size: 1.1rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background: #4a6cf7;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .card h2 {
+        margin-top: 0;
+        font-size: 1.4rem;
+        color: #4a6cf7;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+      }
+
+      .card h2 i {
+        margin-right: 10px;
+        font-size: 1.2rem;
+      }
+
+      .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      button {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: #4a6cf7;
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(74, 108, 247, 0.25);
+      }
+
+      button i {
+        margin-right: 8px;
+      }
+
+      button:hover {
+        background: #3b5be3;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(74, 108, 247, 0.3);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      .regex-btn {
+        background: #4a6cf7;
+        box-shadow: 0 4px 8px rgba(74, 108, 247, 0.25);
+      }
+      .regex-btn:hover {
+        background: #3b5be3;
+        box-shadow: 0 6px 12px rgba(74, 108, 247, 0.3);
+      }
+
+      .callback-btn {
+        background: #6c757d;
+        box-shadow: 0 4px 8px rgba(108, 117, 125, 0.25);
+      }
+      .callback-btn:hover {
+        background: #5a6268;
+        box-shadow: 0 6px 12px rgba(108, 117, 125, 0.3);
+      }
+
+      .async-btn {
+        background: #28a745;
+        box-shadow: 0 4px 8px rgba(40, 167, 69, 0.25);
+      }
+      .async-btn:hover {
+        background: #218838;
+        box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3);
+      }
+
+      .output-container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 0 20px;
+      }
+
+      .output-header {
+        display: flex;
+        align-items: center;
+        color: white;
+        margin-bottom: 15px;
+      }
+
+      .output-header h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+
+      .output-header i {
+        margin-right: 10px;
+        font-size: 1.3rem;
+      }
+
+      #output {
+        padding: 20px;
+        background: #1e1e1e;
+        color: #0f0;
+        border-radius: 10px;
+        min-height: 150px;
+        white-space: pre-wrap;
+        font-family: "Fira Code", "Courier New", monospace;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        overflow: auto;
+        line-height: 1.5;
+        font-size: 0.95rem;
+      }
+
+      .output-controls {
+        margin: auto;
+        width: 50%;
+
+      }
+
+      .output-controls button {
+        margin: 0 auto;
+        padding: 8px 15px;
+        font-size: 0.85rem;
+        background: #6c757d;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .output-controls button:hover {
+        background: #5a6268;
+
+      }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Regex • Callback • Async/Await</h1>
+      <p>Practice JavaScript concepts with interactive examples</p>
+    </header>
+
+    <div class="container">
+      <div class="card">
+        <h2><i class="fas fa-code"></i> Regex Tasks</h2>
+        <p>Work with regular expressions for pattern matching and validation</p>
+        <div class="button-group">
+          <button onclick="validateEmail()" class="regex-btn">
+            <i class="fas fa-envelope"></i> Validate Email
+          </button>
+          <button onclick="extractNumbers()" class="regex-btn">
+            <i class="fas fa-sort-numeric-down"></i> Extract Numbers
+          </button>
+          <button onclick="findCapitalWords()" class="regex-btn">
+            <i class="fas fa-font"></i> Find Capital Words
+          </button>
+          <button onclick="validatePassword()" class="regex-btn">
+            <i class="fas fa-lock"></i> Validate Password
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><i class="fas fa-exchange-alt"></i> Callback Tasks</h2>
+        <p>
+          Understand callback functions and handling asynchronous operations
+        </p>
+        <div class="button-group">
+          <button onclick="simpleCallback()" class="callback-btn">
+            <i class="fas fa-redo"></i> Simple Callback
+          </button>
+          <button onclick="callbackHell()" class="callback-btn">
+            <i class="fas fa-layer-group"></i> Callback Hell Simulation
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><i class="fas fa-bolt"></i> Async/Await Tasks</h2>
+        <p>Work with modern asynchronous JavaScript patterns</p>
+        <div class="button-group">
+          <button onclick="fetchPost()" class="async-btn">
+            <i class="fas fa-database"></i> Fetch Post (API)
+          </button>
+          <button onclick="waitExample()" class="async-btn">
+            <i class="fas fa-hourglass-half"></i> Wait Example
+          </button>
+          <button onclick="fetchEmails()" class="async-btn">
+            <i class="fas fa-envelope-open-text"></i> Fetch & Extract Emails
+          </button>
+          <button onclick="errorHandling()" class="async-btn">
+            <i class="fas fa-bug"></i> Error Handling
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="output-container">
+      <div class="output-header">
+        <h2><i class="fas fa-terminal"></i> Console Output</h2>
+      </div>
+      <pre id="output">
+Click a button to see results. Output will appear here...</pre
+      >
+      <div class="output-controls">
+        <button onclick="clearOutput()">
+          <i class="fas fa-broom"></i> Clear Output
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
