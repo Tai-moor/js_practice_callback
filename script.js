@@ -20,7 +20,7 @@ function validateEmail() {
 function extractNumbers() {
   const str = "Order ID: 12345, Amount: $678";
   const nums = str.match(/\d+/g);
-  log(`Extracted numbers from text: "${str}" → [${nums.join(", ")}]`);
+  log(`Extracted numbers from text: "${str}" → [${nums.join(" and ")}]`);
 }
 
 function findCapitalWords() {
